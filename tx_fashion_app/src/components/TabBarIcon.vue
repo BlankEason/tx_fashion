@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .imgstyle{
     display: block;
-    margin-left: 29px;
+    margin-left: 25px;
     width: 25px;
     height: 25px;
     margin-bottom: 5px;
