@@ -2,13 +2,13 @@
    <div>
        <!-- strip div作为背景,用于显示个分块之间的那个横条 -->
        <div class="strip"> 
-      <div class="me-top">
+        <div class="me-top">
           <div class="me-user">
               <span @click="go_login" v-show="loginState==0">登录/注册</span>
               <span @click="go_user" v-show="loginState==1"><span class="userName">{{data.user_name}}</span>/{{data.phone}}</span>     
           <div class="me-photo"><img src="../../assets/me1.png" alt=""></div>
           </div>
-      </div>
+        </div>
       <ul class="balance"> 
           <li>
               <h3>15</h3>
@@ -21,35 +21,38 @@
       </ul>
       
     <ul class="me_module1">
+        <!-- 我的订单 -->
         <li class="">   
-            <div class="row_img"><img src="../../../public/image/dingdan.png" alt=""></div>
+            <div class="row_img"><img src="../../../public/image/balance.png" alt=""></div>
              <div class="row_content">
-             <div class="title">浏览历史</div>
+             <div class="title">优惠券</div>
              <div class="arrow">></div>
              </div>
         </li>
-        
-                <!-- <li class="">   
-            <div class="row_img"><img src="../../../public/image/address.png" alt=""></div>
-             <div class="row_content">
-             <div class="title">地址定位</div>
-             <div class="arrow">></div>
-             </div>
-        </li> -->
-                <li class="">   
-            <div class="row_img"><img src="../../../public/image/discount.png" alt=""></div>
+          <!-- 我的收藏 -->
+         <li class="">   
+             <div class="row_img"><img src="../../../public/image/discount.png" alt=""></div>
              <div class="row_content">
              <div class="title">我的收藏</div>
              <div class="arrow">></div>
              </div>
         </li>
-                <li class="">   
-            <div class="row_img"><img src="../../../public/image/balance.png" alt=""></div>
+         <!-- 退货与售后 -->
+        <li class="">   
+            <div class="row_img"><img src="../../../public/image/address.png" alt=""></div>
              <div class="row_content">
-             <div class="title">我的订单</div>
+             <div class="title">退货与售后</div>
              <div class="arrow">></div>
              </div>
-                </li>
+        </li>
+        <!-- 游览历史 -->
+        <li class="">   
+             <div class="row_img"><img src="../../../public/image/dingdan.png" alt=""></div>
+             <div class="row_content">
+             <div class="title">浏览历史</div>
+             <div class="arrow">></div>
+             </div>
+        </li>
     </ul>
         <!-- <div class="strip"></div> 分隔横条  -->
     <ul class="me_module2">
@@ -75,10 +78,10 @@
   <!-- <div class="strip"></div> 分隔横条  -->
   <ul class=me_module3>
       <li>
-             <img src="../../../public/image/phone.png" alt="">
-            <div >
-                客户电话 888 888 8888
-            </div>
+        <img src="../../../public/image/phone.png" alt="">
+        <div >
+             客户电话 888 888 8888
+        </div>
       </li>
   </ul>
    </div>
@@ -217,8 +220,9 @@ export default {
   }
  
   .me_module1 .row_img{    /*  模块1 小图标*/
-      width: 80px;
+      width:60px;
       text-align:center;
+      margin-left: 25px;
 
   }
    .me_module1 .row_img>img{
@@ -249,6 +253,7 @@ export default {
   }
   .me_module3{
       margin-top:12px;
+      height: 50px;
   }
   .me_module3 li div{
       height: 45px;
@@ -258,9 +263,11 @@ export default {
       border-bottom: 2px solid #f0f0f0;
   }
   .me_module3 li img{
-      float:right;
+      float: left;
+      width: 48px;
+      /* height: 60px; */
       margin-right:20px;
-      height: 25px;
+      /* height: 25px; */
       padding:10px;
   }
 

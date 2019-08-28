@@ -21,10 +21,9 @@ export default {
 </script>
 <style scoped>
 .imgstyle{
-    display: block;
-    margin-left: 25px;
     width: 25px;
     height: 25px;
     margin-bottom: 5px;
+    display: inline;
 }
 </style>

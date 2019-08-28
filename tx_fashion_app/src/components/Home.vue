@@ -3,16 +3,16 @@
     <div class="page-wrap">
       <mt-tab-container class="page-tabbar-container" v-model="active">
           <mt-tab-container-item id="home">
-             <index/>
+             <index  @upToTshirt="changeTabbar($event)"/>
           </mt-tab-container-item>
           <mt-tab-container-item id="sort">
-            <sort/>
+            <sort :active="change"/>
           </mt-tab-container-item>
           <mt-tab-container-item id="find">
                 <find/>  
           </mt-tab-container-item>
            <mt-tab-container-item id="community">
-               <community/> 
+               <cart/> 
           </mt-tab-container-item>
           <mt-tab-container-item id="me">
            <me/>
@@ -70,7 +70,7 @@ import TabBarIcon from "./TabBarIcon.vue"
 import Index from "./home/Index.vue"
 import Sort from "./sort/Sort.vue"
 import Find from "./find/Find.vue"
-import Community from "./community/Community.vue"
+import Cart from "./cart/Cart.vue"
 import Me from "./me/Me.vue"
 
 export default {
@@ -85,7 +85,8 @@ export default {
         {isSelect:false},
         {isSelect:false},
         {isSelect:false}
-      ]
+      ],
+      change:'1'
     }
   },
   methods: {
@@ -102,16 +103,18 @@ export default {
         //4:其它元素修改false
         this.currentIndex[i].isSelect=false;
        }
-       
       }
-
-    }
+    },
+    changeTabbar(val){
+      this.change = val[1]
+       this.active = val[0];
+     }
   },
   components:{
     "tabbaricon":TabBarIcon,
     "index": Index,
     "sort" : Sort,
-    "community" : Community,
+    "cart" : Cart,
     "find" : Find,
     "me":Me
   }
