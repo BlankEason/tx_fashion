@@ -4,6 +4,7 @@ const pool=require("../pool");
 
 router.get("/",(req,res)=>{
     var lid=req.query.lid;
+    console.log("detail:" + lid)
     if(lid!==undefined){
       var sql=`SELECT * from tx_product where lid =?`
       pool.query(sql,[lid],(err,result)=>{
@@ -13,8 +14,6 @@ router.get("/",(req,res)=>{
         }
     })
     }
-    
-   
 })
 
 module.exports=router;

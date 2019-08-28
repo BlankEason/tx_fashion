@@ -72,7 +72,7 @@ export default {
 			 var url ="home"
 			 this.axios.get(url).then(result => {
 				 this.list=result.data.data
-				 console.log(this.list)
+				//  console.log(this.list)
 			 })
 		 },
 	},

@@ -33,14 +33,14 @@ CREATE TABLE tx_index_product(
     pic_collect VARCHAR(128),
     collect     INT
 );
-INSERT INTO tx_index_product VALUES(null,"OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",199.99,299.99,"L","红色","pd-007.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"被火箭放弃后：1.24亿后场830万抛售休城豪宅，冠军老将专注时尚",199.99,299.99,"L","红色","pd-008.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"美媒：保罗以830万价格挂牌出售位于休斯顿的一处房产",99.99,199.99,"L","红色","pd-009.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"Nike 耐克官方NIKE TANJUN男子运动鞋休闲鞋812654",399.99,499.99,"L","红色","pd-010.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋",599.99,899.99,"L","红色","pd-008.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","tx_details?lid=1","cart.png","cart_a.png",1);
-INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","tx_details?lid=1","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",199.99,299.99,"L","红色","pd-007.png","Detail?lid=1","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"被火箭放弃后：1.24亿后场830万抛售休城豪宅，冠军老将专注时尚",199.99,299.99,"L","红色","pd-008.png","Detail?lid=2","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"美媒：保罗以830万价格挂牌出售位于休斯顿的一处房产",99.99,199.99,"L","红色","pd-009.png","Detail?lid=3","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"Nike 耐克官方NIKE TANJUN男子运动鞋休闲鞋812654",399.99,499.99,"L","红色","pd-010.png","Detail?lid=4","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋",599.99,899.99,"L","红色","pd-008.png","Detail?lid=5","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","Detail?lid=6","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","Detail?lid=7","cart.png","cart_a.png",1);
+INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","Detail?lid=8","cart.png","cart_a.png",1);
 
 -- 商品详情表
 CREATE TABLE tx_product(
@@ -68,6 +68,8 @@ INSERT INTO tx_product VALUES(null,"Nike 耐克官方NIKE AIR VERSITILE IV 男/�
 INSERT INTO tx_product VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋","经典板鞋 潮流出街 低帮小白鞋",899.99,1999.99,"40","红色","6.9折","特价","阿迪达斯","AJ","鞋子","6期免息","免费开通易支付 全场最低6期免息","pd-007.png");
 INSERT INTO tx_product VALUES(null,"Puma彪马男鞋女鞋夏季suede鞋子李现同款帮运动鞋休闲鞋情侣板鞋","经典suede板鞋 放肆舞动 李现同款",899.99,1999.99,"M","粉色","6.9折","特价","NIKE","AJ","衣服","3期免息","免费开通易支付 全场最低6期免息","pd-009.png");
 INSERT INTO tx_product VALUES(null,"Nike 耐克官方 NIKE SPORTSWEAR JDI男子T恤大LOGO AR5007","OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",899.99,1999.99,"L","白色","6.9折","特价","NIKE","AJ","衣服","12期免息","免费开通易支付 全场最低8期免息","pd-007.png");
+INSERT INTO tx_product VALUES(null,"Nike 耐克官方 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈","OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",899.99,1999.99,"L","白色","6.9折","特价","NIKE","AJ","衣服","12期免息","免费开通易支付 全场最低8期免息","blank.jpg");
+
 
 
 

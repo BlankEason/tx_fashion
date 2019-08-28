@@ -1,25 +1,5 @@
 <template>
-<div>
-    <!-- <div class="aui-navBar aui-navBar-fixed">
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon icon-return"></i>
-        </a>
-        <div class="aui-center">
-            <span class="aui-center-title"></span>
-        </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon icon-xin"></i>
-        <i class="icon icon-shr"></i>
-        </a>
-    </div>
-     <div id="scrollBg" style="display:block;">
-        <div class="aui-link-me">
-            <a href="#commodity">商品</a>
-            <a href="#">评价</a>
-            <a href="#">详情</a>
-        </div>
-    </div> -->
-
+<div >
     <mt-header title="" fixed>
         <router-link to="/" slot="left">
             <mt-button icon="back"></mt-button>
@@ -28,29 +8,31 @@
     </mt-header>
     <!-- 轮播图 -->
     <carousel/>
-    <!-- 价格栏 -->
-    <div class="aui-product-head aui-footer-flex">
-        <h2>
-            <i>￥</i>
-            588
-        </h2>
-        <span>￥899</span>
-        <em>6.9折</em>
-        <em>特价</em>
-    </div>
-    <!-- 正标题 -->
-    <div class="aui-product-title">
-        <h2>OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</h2>
-    </div>
-    <!-- 副标题 -->
-    <div class="aui-product-title aui-product-title-text">
-        <h2>鬼冢虎 Mexico66 李宇春同款OnitsukaTiger  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</h2>
+    <div v-for="(item,i) of list" :key="i">
+        <!-- 价格栏 -->
+        <div class="aui-product-head aui-footer-flex">
+            <h2>
+                <i>￥</i>
+                {{item.price}}
+            </h2>
+            <span>￥{{item.subprice}}</span>
+            <em>{{item.discount}}</em>
+            <em>{{item.special}}</em>
+        </div>
+        <!-- 正标题 -->
+        <div class="aui-product-title">
+            <h2>{{item.title}}</h2>
+        </div>
+        <!-- 副标题 -->
+        <div class="aui-product-title aui-product-title-text">
+            <h2>{{item.subtitle}}</h2>
+        </div>
     </div>
     <!-- 广告图 -->
     <div class="aui-ad-img">
         <img src="../../../public/image/ad-004.png" alt="">
     </div>
-    <!-- 尺码 促销 配送 -->
+        <!-- 尺码 促销 配送 -->
      <div class="aui-module-box">
         <ul>
             <li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet',closeElement:'#cancel'}">
@@ -61,10 +43,8 @@
             <li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet1',closeElement:'#cancel1'}">
                 <div class="aui-module-hd">促销</div>
                 <div class="aui-module-bd">
-                    <span>[12期免息]</span>
-                    免费开通易支付 全场最低6期免息
-                
-                
+                    <span>[{{item.free}}]</span>
+                    {{item.sales}}
                 </div>
                 <div class="aui-module-fr aui-footer-flex1"></div>
             </li>
@@ -493,23 +473,37 @@ import Carousel from "./Carousel";
 export default {
   data() {
       return {
-          popupVisible:""
+          popupVisible:"",
+          list:[]
       }
   },
   props:["lid"],
   methods:{
      //   加载信息
      load(){
-        var lid=location.search.split("=")[1];
+        var lid=this.$route.query.lid;
+            console.log(lid)
         if(lid){
-            var url="detail?lid=lid"
+            var url="detail"
+            this.axios.get(url,{params:{lid:lid}}).then(result =>{
+                this.list=result.data.data
+                console.log(this.list)
+            })
         }
      },
      handleChange(){     },
      },
      components:{
-     "carousel":Carousel,
-     }
+        "carousel":Carousel,
+     },
+     created() {
+		 this.load(); //加载
+     },
+     watch:{
+         lid(){//只要lid发生变化
+             this.load()//就重新请求服务端数据 更好data中的所有变量   
+         }
+     },
 }
 </script>
 <style scoped>
