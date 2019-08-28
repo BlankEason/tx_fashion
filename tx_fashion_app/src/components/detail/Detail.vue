@@ -496,10 +496,14 @@ export default {
           popupVisible:""
       }
   },
+  props:["lid"],
   methods:{
      //   加载信息
      load(){
-        
+        var lid=location.search.split("=")[1];
+        if(lid){
+            var url="detail?lid=lid"
+        }
      },
      handleChange(){     },
      },
