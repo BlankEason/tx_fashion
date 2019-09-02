@@ -20,11 +20,11 @@
 export default {
     data() {
         return {
-            
+            list:[]
         }
     },
     methods:{
-    handleChange(){     },
+    handleChange(){ },
   },
 }
 </script>

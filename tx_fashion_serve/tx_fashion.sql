@@ -41,6 +41,82 @@ INSERT INTO tx_index_product VALUES(null,"Adidas阿迪达斯男鞋2019秋季新�
 INSERT INTO tx_index_product VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","Detail?lid=6","cart.png","cart_a.png",1);
 INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","Detail?lid=7","cart.png","cart_a.png",1);
 INSERT INTO tx_index_product VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","Detail?lid=8","cart.png","cart_a.png",1);
+-- shirt
+CREATE TABLE tx_product_shirt(
+    pid         INT PRIMARY KEY AUTO_INCREMENT,
+    title       VARCHAR(128),
+    price       INT,
+    subprice    INT,
+    spec        VARCHAR(32),
+    color       VARCHAR(32),
+    pic		VARCHAR(128),
+    href	VARCHAR(128),
+    pic_collect_active VARCHAR(128),
+    pic_collect VARCHAR(128),
+    collect     INT
+);
+INSERT INTO tx_product_shirt VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","Detail?lid=8","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","Detail?lid=7","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","Detail?lid=6","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",199.99,299.99,"L","红色","pd-007.png","Detail?lid=1","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"被火箭放弃后：1.24亿后场830万抛售休城豪宅，冠军老将专注时尚",199.99,299.99,"L","红色","pd-008.png","Detail?lid=2","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"美媒：保罗以830万价格挂牌出售位于休斯顿的一处房产",99.99,199.99,"L","红色","pd-009.png","Detail?lid=3","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"Nike 耐克官方NIKE TANJUN男子运动鞋休闲鞋812654",399.99,499.99,"L","红色","pd-010.png","Detail?lid=4","cart.png","cart_a.png",1);
+INSERT INTO tx_product_shirt VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋",599.99,899.99,"L","红色","pd-008.png","Detail?lid=5","cart.png","cart_a.png",1);
+
+-- men
+CREATE TABLE tx_product_men(
+    pid         INT PRIMARY KEY AUTO_INCREMENT,
+    title       VARCHAR(128),
+    price       INT,
+    subprice    INT,
+    spec        VARCHAR(32),
+    color       VARCHAR(32),
+    pic		VARCHAR(128),
+    href	VARCHAR(128),
+    pic_collect_active VARCHAR(128),
+    pic_collect VARCHAR(128),
+    collect     INT
+);
+INSERT INTO tx_product_men VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","Detail?lid=7","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋",599.99,899.99,"L","红色","pd-008.png","Detail?lid=5","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","Detail?lid=8","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","Detail?lid=6","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",199.99,299.99,"L","红色","pd-007.png","Detail?lid=1","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"被火箭放弃后：1.24亿后场830万抛售休城豪宅，冠军老将专注时尚",199.99,299.99,"L","红色","pd-008.png","Detail?lid=2","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"美媒：保罗以830万价格挂牌出售位于休斯顿的一处房产",99.99,199.99,"L","红色","pd-009.png","Detail?lid=3","cart.png","cart_a.png",1);
+INSERT INTO tx_product_men VALUES(null,"Nike 耐克官方NIKE TANJUN男子运动鞋休闲鞋812654",399.99,499.99,"L","红色","pd-010.png","Detail?lid=4","cart.png","cart_a.png",1);
+
+-- tshirt
+CREATE TABLE tx_product_tshirt(
+    pid         INT PRIMARY KEY AUTO_INCREMENT,
+    title       VARCHAR(128),
+    price       INT,
+    subprice    INT,
+    spec        VARCHAR(32),
+    color       VARCHAR(32),
+    pic		VARCHAR(128),
+    href	VARCHAR(128),
+    pic_collect_active VARCHAR(128),
+    pic_collect VARCHAR(128),
+    collect     INT
+);
+INSERT INTO tx_product_tshirt VALUES(null,"Adidas阿迪达斯男鞋2019秋季新款运动鞋鞋子透气休闲鞋小白板鞋",599.99,899.99,"L","红色","pd-008.png","Detail?lid=5","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-009.png","Detail?lid=7","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"智能陪护让你的孩子赢在起跑线上面智能陪护让你的孩子赢在起跑线上面",199.99,299.99,"L","红色","pd-010.png","Detail?lid=8","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",299.99,499.99,"L","红色","pd-007.png","Detail?lid=6","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋",199.99,299.99,"L","红色","pd-007.png","Detail?lid=1","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"被火箭放弃后：1.24亿后场830万抛售休城豪宅，冠军老将专注时尚",199.99,299.99,"L","红色","pd-008.png","Detail?lid=2","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"美媒：保罗以830万价格挂牌出售位于休斯顿的一处房产",99.99,199.99,"L","红色","pd-009.png","Detail?lid=3","cart.png","cart_a.png",1);
+INSERT INTO tx_product_tshirt VALUES(null,"Nike 耐克官方NIKE TANJUN男子运动鞋休闲鞋812654",399.99,499.99,"L","红色","pd-010.png","Detail?lid=4","cart.png","cart_a.png",1);
+
+
+
+
+
+
+
+
 
 -- 商品详情表
 CREATE TABLE tx_product(
@@ -83,6 +159,15 @@ CREATE TABLE tx_product_carousel(
     pic3        VARCHAR(128),
     pic4        VARCHAR(128)
 );
+INSERT INTO tx_product_carousel VALUES(null,1,"0001-1.jpg","0001-2.jpg","0001-3.jpg","0001-4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,2,"0003_1.jpg","0003_2.jpg","0003_3.jpg","0003_4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,3,"0004_1.jpg","0004_2.jpg","0004_3.jpg","0004_4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,4,"0005_1.jpg","0005_2.jpg","0005_3.jpg","0005_4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,5,"0008_1.jpg","0008_2.jpg","0008_3.jpg","0008_4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,6,"0009_1.jpg","0009_2.jpg","0009_3.jpg","0009_4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,7,"0010_1.jpg","0010_2.jpg","0010_3.jpg","0010-4.jpg");
+INSERT INTO tx_product_carousel VALUES(null,8,"aj1.png","aj2.png","aj3.png","aj4.png");
+
 CREATE TABLE tx_shopcart(
     id          INT PRIMARY KEY AUTO_INCREMENT,
     uid         INT,

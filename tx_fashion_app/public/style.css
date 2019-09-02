@@ -863,14 +863,14 @@ a {
 }
 
 .aui-list-theme-img {
-    height: auto;
+    height: 250px;
     width: 100%;
     position: relative;
 }
 
 .aui-list-theme-img img {
     width: 100%;
-    height: auto;
+    height: 250px;
     display: block;
     border: none;
 }

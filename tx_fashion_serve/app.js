@@ -16,9 +16,10 @@ const session = require("express-session");
 const home=require("./routes/home");//首页热门菜系
 const add=require("./routes/addcollect");
 const userRouter=require("./routes/user");//引入登录/注册的路由器
-const sort=require("./routes/sort"); //引入分类路由器
+// const sort=require("./routes/sort"); 
 const shopcart=require("./routes/shopcart"); //引入分类路由器
 const detail=require("./routes/detail"); 
+const search=require("./routes/search"); 
 
 
 
@@ -60,9 +61,10 @@ server.listen(3000);
 server.use("/home",home);//首页热门菜系路由
 server.use("/add",add);
 server.use("/user",userRouter);  //使用登录/注册的路由器
-server.use("/sort",sort); //分类路由
+// server.use("/sort",sort); 
 server.use("/shopcart",shopcart); //收藏路由
 server.use("/detail",detail); //详情页
+server.use("/search",search); 
 
 
 

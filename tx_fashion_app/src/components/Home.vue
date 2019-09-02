@@ -86,7 +86,8 @@ export default {
         {isSelect:false},
         {isSelect:false}
       ],
-      change:'1'
+      change:'1',
+      turnBack:''
     }
   },
   methods: {
@@ -108,6 +109,14 @@ export default {
     changeTabbar(val){
       this.change = val[1]
        this.active = val[0];
+     },
+     //点详情页购物车 回到购物车
+     getTurnBack() {
+        this.turnBack=this.$store.getters.getTabShow;
+        for(var item of this.currentIndex) {
+          item.isSelect = false;
+        }
+        // this.currentIndex[3].isSelect = true;
      }
   },
   components:{
@@ -117,7 +126,16 @@ export default {
     "cart" : Cart,
     "find" : Find,
     "me":Me
-  }
+  },
+  mounted(){
+    this.getTurnBack();//点详情页购物车 回到购物车
+  },
+  watch: {
+    //点详情页购物车 回到购物车
+    turnBack() {
+      this.active = this.turnBack;
+    }
+  },
 }
 </script>
 <style  scoped>

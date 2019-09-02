@@ -1,7 +1,7 @@
 <template>
     <div class="app-login">
         <div class="login-top">            
-            <img src="../../../public/image/logo.png" alt="" class="logo-icon">
+            <img style="width:150px;height:30px" src="../../../public/image/logo-pp.png" alt="" class="logo-icon">
             <div class="return" @click="return_me" ><img src="../../../public/image/return.png" alt=""></div>
         </div>
         <div class="login-selected">
@@ -160,6 +160,7 @@ export default {
 }
 </script>
 <style scoped>
+
  .login-top{
      height: 48px;
       text-align: center;

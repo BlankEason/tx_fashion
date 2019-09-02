@@ -3,8 +3,10 @@
 				<div class="tab-panel-item tab-active">
 					<div class="aui-list-theme-box">
 						<div class="aui-list-item" v-for="(item,i) of list" :key="i">
-								<div class="aui-list-theme-img">
-									<img :src="`http://127.0.0.1:3000/`+item.pic" >
+								<div class="aui-list-theme-img" >
+									<!-- <router-link :to="item.href"> -->
+										<img :src="`http://127.0.0.1:3000/`+item.pic"  @click="goTo(item)">
+									<!-- </router-link> -->
 								</div>
 								<div class="aui-list-theme-message">
 									<h3 class="aui-list-theme-title">{{item.title}}</h3>
@@ -66,11 +68,15 @@ export default {
       });
 		 },
 		 load(){
-			 var url ="home"
+			 var url ="home/men"
 			 this.axios.get(url).then(result => {
 				 this.list=result.data.data
 				//  console.log(this.list)
 			 })
+		 },
+		 //  跳转至详情页
+		 goTo(item) {
+			 	 this.$router.push(`/Detail/${item.href.split("=")[1]}`)
 		 },
 	},
 	created() {

@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const pool=require("../pool");
-//添加到收藏夹中
+//添加到购物车中
 router.get("/addshopcart",(req,res)=>{
     // 参数
     // 当前用户登录id
@@ -43,20 +43,5 @@ router.get("/addshopcart",(req,res)=>{
     })
 })
 
-//http://127.0.0.1:3000/user/login?uname=tom&upwd=123
-//http://127.0.0.1:3000/add/addcollect?uid=01%fid=02&cid=02&title=yu&subtitle=hahah&detail=xixixi&pic=01.jpg&href=hadfsd
-//用户登录收藏过的图标变红
-// router.get("/add_active",(req,res)=>{
-//     var uid=req.session.uid
-//     if(!uid){
-//         res.send({code:-1,msg:"未登录"})
-//     }else{
-//         var sql="SELECT cid,display FROM cook_collect where uid=? "
-//         pool.query(sql,[uid],(err,result)=>{
-//             if(err) throw err;
-//             res.send({code:1,data:result})
-//         })
-//     }
-// })
 
 module.exports=router;

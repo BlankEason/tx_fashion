@@ -11,7 +11,8 @@ import Me from './components/me/Me.vue'
 import Login from './components/me/Login.vue'
 import User from './components/me/User.vue'  //用户详情
 import Detail from './components/detail/Detail.vue' 
-
+import Searchlist from './components/search/SearchList.vue' 
+import NotFound from './components/notfound/NotFound.vue' 
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +26,8 @@ export default new Router({
     { path: '/Me',component:Me},
     {path:'/User',component:User},
     {path:'/Login',component:Login},
-    {path:'/Detail',component:Detail},
+    {path:'/Detail/:lid',component:Detail,props:true},
+    {path:'/Searchlist/:kw',component:Searchlist,props:true},
+    {path:'*',component:NotFound},
   ]
 })

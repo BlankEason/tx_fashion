@@ -78,7 +78,7 @@
   <!-- <div class="strip"></div> 分隔横条  -->
   <ul class=me_module3>
       <li>
-        <img src="../../../public/image/phone.png" alt="">
+        <!-- <img src="../../../public/image/phone.png" alt=""> -->
         <div >
              客户电话 888 888 8888
         </div>
@@ -137,7 +137,7 @@ export default {
       background: #F0F0F0;
   }
   .me-top{
-      height: 165px;
+      height: 200px;
       width: 100%;
       background: url(../../../public/image/article-1.jpg) no-repeat ;
       background-size:100% 100%;

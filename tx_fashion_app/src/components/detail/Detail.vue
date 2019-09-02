@@ -1,31 +1,47 @@
 <template>
 <div >
-    <mt-header title="" fixed>
-        <router-link to="/" slot="left">
-            <mt-button icon="back"></mt-button>
+    <mt-header title="商品" fixed>
+        <router-link to="" slot="left">
+            <mt-button icon="back" @click="back"></mt-button>
         </router-link>
-        <mt-button icon="more" slot="right"></mt-button>
+        <mt-button  slot="right"></mt-button>
     </mt-header>
     <!-- 轮播图 -->
-    <carousel/>
-    <div v-for="(item,i) of list" :key="i">
+    <div class="carousel">
+        <mt-swipe @change="handleChange" :auto="3000" :show-indicators="true">
+            <mt-swipe-item>
+                <img :src="`http://127.0.0.1:3000/`+this.pics.pic1">
+            </mt-swipe-item>
+            
+            <mt-swipe-item>
+                <img :src="`http://127.0.0.1:3000/`+this.pics.pic2">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img :src="`http://127.0.0.1:3000/`+this.pics.pic3">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img :src="`http://127.0.0.1:3000/`+this.pics.pic4">
+            </mt-swipe-item>
+        </mt-swipe>
+    </div>
+    <div>
         <!-- 价格栏 -->
         <div class="aui-product-head aui-footer-flex">
             <h2>
                 <i>￥</i>
-                {{item.price}}
+                {{this.list.price}}
             </h2>
-            <span>￥{{item.subprice}}</span>
-            <em>{{item.discount}}</em>
-            <em>{{item.special}}</em>
+            <span>￥{{this.list.subprice}}</span>
+            <em>{{this.list.discount}}</em>
+            <em>{{this.list.special}}</em>
         </div>
         <!-- 正标题 -->
         <div class="aui-product-title">
-            <h2>{{item.title}}</h2>
+            <h2>{{this.list.title}}</h2>
         </div>
         <!-- 副标题 -->
         <div class="aui-product-title aui-product-title-text">
-            <h2>{{item.subtitle}}</h2>
+            <h2>{{this.list.subtitle}}</h2>
         </div>
     </div>
     <!-- 广告图 -->
@@ -43,8 +59,8 @@
             <li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet1',closeElement:'#cancel1'}">
                 <div class="aui-module-hd">促销</div>
                 <div class="aui-module-bd">
-                    <span>[{{item.free}}]</span>
-                    {{item.sales}}
+                    <span>[{{this.list.free}}]</span>
+                    {{this.list.sales}}
                 </div>
                 <div class="aui-module-fr aui-footer-flex1"></div>
             </li>
@@ -450,13 +466,15 @@
             <i class="icon-service"></i>
             <span>客服</span>
         </div>
-        <div class="aui-footer-wrap">
+        <div class="aui-footer-wrap" @click="upToCart">
             <i class="icon-car"></i>
             <span>购物车</span>
         </div>
         <div class="aui-footer-group aui-footer-flex1">
             <div class="aui-footer-flex">
-                <div class="aui-btn aui-btn-gray">
+                <div class="aui-btn aui-btn-gray" 
+                    	@click="addshoppcart"      
+                >
                     <span>加入购物车</span>
                 </div>
                 <div class="aui-btn aui-btn-red">
@@ -468,34 +486,80 @@
 </div>
 </template>
 <script>
-import Carousel from "./Carousel";
-
+// import Carousel from "./Carousel";
+//  import { mapActions } from 'vuex'    //引入方法
 export default {
   data() {
       return {
           popupVisible:"",
-          list:[]
+          list:[],
+          pics:[]
       }
   },
   props:["lid"],
-  methods:{
-     //   加载信息
-     load(){
-        var lid=this.$route.query.lid;
-            console.log(lid)
-        if(lid){
-            var url="detail"
-            this.axios.get(url,{params:{lid:lid}}).then(result =>{
-                this.list=result.data.data
-                console.log(this.list)
-            })
-        }
+     methods:{
+        //  ...mapActions(['addGoods']),
+        //  返回上一页
+        back(){
+            this.$router.go(-1)
+            // console.log(111)
+        },
+        //  跳转购物车
+        upToCart(){
+            // sessionStorage.setItem('turnBack','community')
+            this.$store.commit('setTabShow','community')
+            console.log(this.$store.getters.getTabShow)
+            this.$router.push("/");
+        },
+        //   加载信息
+         load(){
+            // let id = this.$route.query.lid
+            // this.lid=id
+            console.log(this.lid)
+            if(this.lid){
+                var url="detail"
+                this.axios.get(url,{params:{lid:this.lid}}).then(result =>{
+                    // this.list=result.data.data[0]
+                    this.list=result.data.product
+                    // console.log(this.list)
+                    this.pics=result.data.pics[0]
+                    // console.log(this.pics)
+                })
+            }
+         },
+         handleChange(){},
+        //  加入购物车
+         addshoppcart(){
+			//   console.log(222222222)
+             //  获取数据
+             var pid=this.$route.query.lid;
+             var href=this.$route.fullPath;
+			 var title=this.list.title
+			 var price=this.list.price
+			 var pic=this.list.pic
+			 var spec=this.list.spec
+			 var color=this.list.color
+            //  var href=this.list.href
+            //  console.log(title,price,pic,spec,color,pid,href)
+		 	 //`  请求地址
+			 var url="add/addshopcart"
+		 	 //   请求参数
+			 var obj={pid,title,price,pic,spec,color,href}
+			 this.axios.get(url,{params: obj}).then(res =>{ 
+				 if (res.data.code == -1) {
+					 this.$messagebox("消息", "请先登录再加入购物车").then(res => {
+						 this.$router.push("/Login");
+						 return;
+					 });
+				 }else{
+					 this.$toast("添加成功");
+				 } 
+			 });
+		 },
      },
-     handleChange(){     },
-     },
-     components:{
-        "carousel":Carousel,
-     },
+    //  components:{
+    //     "carousel":Carousel,
+    //  },
      created() {
 		 this.load(); //加载
      },
@@ -507,6 +571,10 @@ export default {
 }
 </script>
 <style scoped>
+.carousel{
+    width: 100%;
+    height: 317px;
+}
 .mint-header{
     background-color: white;
     color: #000;

@@ -4,15 +4,25 @@ const pool=require("../pool");
 
 router.get("/",(req,res)=>{
     var lid=req.query.lid;
-    console.log("detail:" + lid)
+    var output={
+        product:{},
+        pics:{}
+    }
+    // console.log("detail:" + lid)
     if(lid!==undefined){
-      var sql=`SELECT * from tx_product where lid =?`
-      pool.query(sql,[lid],(err,result)=>{
-        if(err) throw err;
-        if(result.length>0) {
-            res.send({code:1,data:result})
-        }
-    })
+         var sql1=`SELECT * from tx_product where lid =?`
+         pool.query(sql1,[lid],(err,result)=>{
+                 if(err) throw err;
+                 output.product=result[0]
+                 console.log(output.product);
+                 var sql2=`SELECT * from tx_product_carousel where lid =?`
+                 pool.query(sql2,[lid],(err,result) =>{
+                     if(err) throw err;
+                     output.pics=result;
+                     console.log(output.pics)
+                     res.send(output)
+                 })
+         })
     }
 })
 

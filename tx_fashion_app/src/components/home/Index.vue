@@ -1,22 +1,25 @@
 <template>
 <div class="main" >
     <!-- 顶部搜索栏 -->
-   <div class="search">
+		
+   <!-- <div class="search">
      <header class="aui-navBar aui-navBar-fixed">
       <a href="javascript:;" class="aui-navBar-item">
         <i class="icon icon-return"></i>
       </a>
       <div class="aui-center">
+	
         <div class="aui-search-box">
-          <i class="icon icon-search"></i>
-          <input type="text" placeholder="UFO日 劵后最高享9.2折">
+          <i class="icon icon-search" @click="search"></i>
+          <input type="text" v-model="kw" @keyup.13="search" placeholder="UFO日 劵后最高享9.2折">
         </div>
       </div>
       <a href="javascript:;" class="aui-navBar-item" >
         <i class="icon icon-news"></i>
       </a>
     </header>
-   </div>
+   </div> -->
+	 <search/>
    <!-- 保留元素 -->
    <div style="margin-top:44px;"></div>
    <!-- 轮播图 -->
@@ -143,9 +146,9 @@
 							<!-- 每个商品 -->
 						<div class="aui-list-item" v-for="(item,i) of list" :key="i">
 								<div class="aui-list-theme-img" >
-									<router-link :to="item.href">
-										<img :src="`http://127.0.0.1:3000/`+item.pic" >
-									</router-link>
+									<!-- <router-link :to="item.href"> -->
+										<img :src="`http://127.0.0.1:3000/`+item.pic"  @click="goTo(item)">
+									<!-- </router-link> -->
 								</div>
 								<div class="aui-list-theme-message">
 									<h3 class="aui-list-theme-title">{{item.title}}</h3>
@@ -179,15 +182,10 @@ export default {
 		 return {
 		 search:"",
 		 list:[],	//接收服务端数据
-
 		 }
 	 },
 
 	 methods:{
-		 //  跳转详情页
-		//  upToDetail(){
-		//  	 this.$router.push(`/${item.href}`)
-		//  },
 		 //  加入购物车
 		 addshoppcart(e){
 			 //  console.log(111)
@@ -199,6 +197,7 @@ export default {
 			 var spec=e.target.dataset.spec
 			 var color=e.target.dataset.color
 			 var href=e.target.dataset.href
+			 console.log("index" + title)
 		 	 //  请求地址
 			 var url="add/addshopcart"
 		 	 //   请求参数
@@ -219,9 +218,13 @@ export default {
 			 var url ="home"
 			 this.axios.get(url).then(result => {
 				 this.list=result.data.data
-				  console.log(this.list)
+				  // console.log(this.list)
 			 })
 		 },
+		//  跳转至详情页
+		 goTo(item) {
+			 this.$router.push(`/Detail/${item.href.split("=")[1]}`)
+			 },
 		 // 分类跳转
 		 upToTshirt(val){
 			this.$emit("upToTshirt",['sort',val])
