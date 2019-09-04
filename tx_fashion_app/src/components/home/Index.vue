@@ -147,6 +147,7 @@
 						<div class="aui-list-item" v-for="(item,i) of list" :key="i">
 								<div class="aui-list-theme-img" >
 									<!-- <router-link :to="item.href"> -->
+										<!-- 跳转至详情页 -->
 										<img :src="`http://127.0.0.1:3000/`+item.pic"  @click="goTo(item)">
 									<!-- </router-link> -->
 								</div>
@@ -188,7 +189,7 @@ export default {
 	 methods:{
 		 //  加入购物车
 		 addshoppcart(e){
-			 //  console.log(111)
+			  console.log(111)
 			 //  获取数据
 			 var pid=e.target.dataset.pid
 			 var title=e.target.dataset.title
@@ -197,7 +198,7 @@ export default {
 			 var spec=e.target.dataset.spec
 			 var color=e.target.dataset.color
 			 var href=e.target.dataset.href
-			 console.log("index" + title)
+			 console.log(pid)
 		 	 //  请求地址
 			 var url="add/addshopcart"
 		 	 //   请求参数
@@ -212,6 +213,7 @@ export default {
 					 this.$toast("添加成功");
 				 } 
 			 });
+			 this.load()
 		 },
 		 //  首页数据加载
 		 load(){

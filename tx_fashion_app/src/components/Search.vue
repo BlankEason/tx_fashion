@@ -1,10 +1,12 @@
 <template>
   <div class="search">
      <header class="aui-navBar aui-navBar-fixed">
-      <!-- <a href="javascript:;" class="aui-navBar-item" >
-        <img src="../assets/return.png" alt="" >
-      </a> -->
-      <div class="aui-navBar-item">
+       <!-- 首页图标 -->
+      <div v-if="dis==true" class="aui-navBar-item">
+        <img src="../assets/index.png" alt="" >
+      </div>
+      <!-- 显示返回图标 -->
+      <div v-else class="aui-navBar-item">
         <img src="../assets/return.png" alt="" @click="toHome" >
       </div>
       <div class="aui-center">
@@ -24,7 +26,8 @@
 export default {
   data(){
     return{
-      kw:""
+      kw:"",
+      dis:true,
     }
   },
   mounted(){
@@ -33,7 +36,12 @@ export default {
   watch:{
     "$route"(){
       this.kw=this.$route.params.kw;
-    }
+    },
+    "kw"(){
+      if(this.kw!=null){
+        this.dis=false;
+      }
+    },
   },
   methods:{
     search(){

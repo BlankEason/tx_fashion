@@ -8,18 +8,17 @@ router.get("/",(req,res)=>{
         product:{},
         pics:{}
     }
-    // console.log("detail:" + lid)
     if(lid!==undefined){
          var sql1=`SELECT * from tx_product where lid =?`
          pool.query(sql1,[lid],(err,result)=>{
                  if(err) throw err;
                  output.product=result[0]
-                 console.log(output.product);
+                //  console.log(output.product);
                  var sql2=`SELECT * from tx_product_carousel where lid =?`
                  pool.query(sql2,[lid],(err,result) =>{
                      if(err) throw err;
                      output.pics=result;
-                     console.log(output.pics)
+                    //  console.log(output.pics)
                      res.send(output)
                  })
          })

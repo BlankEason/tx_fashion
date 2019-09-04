@@ -5,7 +5,7 @@
             <div class="box1">购物车 (<span id="countNum">4</span>)</div>
             <div class="box2">编辑</div>
         </div> -->
-        <mt-header title="购物车(1)" fixed>
+        <mt-header title="购物车" fixed>
             <router-link to="" slot="left">
                 <mt-button icon="back" @click="back"></mt-button>
             </router-link>
@@ -14,13 +14,6 @@
     </div>
     <div style="height:44px;"></div>
     <div class="shopping-item">
-      <!-- 店铺名称 -->
-        <!-- <div class="shopping-name1" onclick="singleAll(this)">
-            <div class="shopping-check" >
-                <input type="checkbox" class="checkbox_css" >
-            </div>
-            九月的小铺
-        </div> -->
         <!-- 商品 -->
         <div class="goods-item" v-for="(item,i) of list" :key="i">
             <!-- 每件商品 -->
@@ -28,9 +21,9 @@
                 <div class="store-goods">
                   <!-- 左边 选择框 -->
                     <div class="shopping-check" >
-                        <input type="checkbox" class="checkbox_css" v-model="item.cb" >
+                        <input type="checkbox" class="checkbox_css" :checked="item.checked" @click="singerSelected(item)" >  <!-- v-model="item.cb -->
                     </div>
-                    <!--<span class="shopping-select"></span>-->
+                   npm run build <!--<span class="shopping-select"></span>-->
                     <!-- 图片 -->
                     <div class="cartimg" @click="upDetail(item)">
                      <img :src="`http://127.0.0.1:3000/`+item.pic" alt="">
@@ -67,15 +60,15 @@
     <!-- 全选 合计 结算 -->
     <div class="shopping-account" >
       <div class="d1">
-        <div class="shopping-check" @change="selectAll" >
-            <input type="checkbox" class="checkbox_css">
+        <div class="shopping-check"  >
+            <input type="checkbox" class="checkbox_css" :checked="isSelectedAll" @change="selectAll(isSelectedAll)">
         </div>
         <div>全选</div>
       </div>
       <mt-button style="width:100px;height:30px" @click="delMItem">删除所有</mt-button>
                 
       <div class="shopping-count">合计:
-          <div class="count-color">￥<span>{{sumPrice}}</span></div>
+          <div class="count-color">￥<span>{{totalPrice}}</span></div>
           <div class="total" onclick="Count()">结算 </div>
       </div>
     </div>
@@ -90,23 +83,22 @@ export default {
         //  del_show:false,
          list:[],
         //  count:1,
-         sumPrice:0,
+        //  sumPrice:0,
          totalNumber: 0, //总数
-         
+         isSelectedAll:false,   //是否全选
+         totalPrice:0,      //所有商品总价格
+         changeLength:""    //监听list中数组长度变化
       }
   },
+  props:['fresh'],
   methods: {
-    // countChange(){
-    //   console.log(this.$store)
-    // },
     // 删除多条数据
-    
     delMItem(){                                  //删除购物车多个指定商品
       // 1.创建变量保存多个购物车商品id
       var str="";
       // 2.创建循环遍历数组 获取状态为true的id值
       for(var item of this.list){
-          if(item.cb){// true  当前商品选中
+          if(item.checked){// true  当前商品选中
               str+=item.id+","; //将id拼接
           }
       }
@@ -116,7 +108,7 @@ export default {
           this.$messagebox("请选择要删除的商品")
           return;//停止执行
       }
-      console.log(str) 
+         //   console.log(str) 
       // 3.截取字符串中最后，
       str=str.substring(0,str.length-1);
       // console.log(str) 
@@ -132,50 +124,96 @@ export default {
               //执行成功删除后重新加载
               this.$toast("删除成功")
               this.load();
+              for(let i=0,list=this.list; i<list.length;i++) {
+                    list[i].id=id;
+                    list.splice(i,1)
+                }
           })
       }).catch(err=>{
 
       })
-      
       // 6.提示用户删除成功 并且重新加载数据
     },
-    
     // 删除指定商品
-    
     delitem(e){
-      var id=e.target.dataset.id;
-      console.log(id)
-      var title=e.target.dataset.title
-      // 交互提示用户是否删除指定商品
-      // 同意
-      this.$messagebox.confirm(`是否删除${id}为${title}`).then(res=>{
-        var obj={id}
-          // 发送ajax 服务器端程序 ?id=id
-        this.axios.get("shopcart/del",{params:obj}).then(res=>{
-          // console.log(res);
-          if(res.data.code>0){
-                // 返回服务器返回内容
-              // 重新调用loadMore() 更新购物车列表
-              this.$toast("删除成功")
-              this.load();
-              // console.log(123)
-          } 
+        var id=e.target.dataset.id;
+        // console.log(id)
+        var title=e.target.dataset.title
+        // 交互提示用户是否删除指定商品
+        // 同意
+        this.$messagebox.confirm(`是否删除${id}为${title}`).then(res=>{
+            var obj={id}
+                // 发送ajax 服务器端程序 ?id=id
+            this.axios.get("shopcart/del",{params:obj}).then(res=>{
+                // console.log(res);
+                if(res.data.code==1){
+                    // 返回服务器返回内容
+                    // 重新调用loadMore() 更新购物车列表
+                    this.$toast("删除成功")
+                    this.load();
+                    // console.log(123)
+                    // console.log(res)
+                    for(let i=0,list=this.list; i<list.length;i++) {
+                      list[i].id=id;
+                      list.splice(i,1)
+                    }
+                } 
+            })
+        }).catch(err=>{
+            // console.log("取消删除")
         })
-      }).catch(err=>{
-          // console.log("取消删除")
-      })
+        
     },
-    
-    selectAll(e){ //                               全选按钮处理函数
-      // 1.获取全选按钮状态
-       var cb=e.target.checked;
-       // console.log(cb)
-       // 2.创建一个循环 遍历购物车数组
-       for(var item of this.list){
-             // 3.将全选的状态赋值购物车商品选中状态
-         //  item.cb为商品的状态 = cb 为全选按钮状态
-          item.cb=cb;
-      }
+    // 全选按钮处理
+    selectAll(flag){ 
+        // 总控制
+      this.isSelectedAll=!flag;
+        //   为商品单选添加属性
+      this.list.forEach((value,index)=>{
+            if(typeof value.checked=='undefined'){
+                    this.$set(value,'checked',"!flag")
+            }else{
+                value.checked=!flag;
+            }
+        })
+        // 计算总价格
+        this.getAllShopPrice()
+    },
+    // 计算总价格
+    getAllShopPrice(){
+        let totalPrice=0;
+        // 遍历商品
+        this.list.forEach((value,index) =>{
+            // 判断是否被选中
+            if(value.checked){
+                totalPrice+=value.price*value.count
+            }
+        })
+        this.totalPrice=totalPrice;
+    },
+    // 单个商品的选中与取消
+    singerSelected(e){
+        // 判断是否有属性
+        if(typeof e.checked=='undefined'){
+            this.$set(e,'checked',"true")
+        }else{
+            e.checked=!e.checked
+        }
+        // 计算总价格
+        this.getAllShopPrice()
+        // 判断是否全选
+        this.hasSelectedAll();
+        
+    },
+    // 判断是否全选
+    hasSelectedAll(){
+        let flag=true;
+        this.list.forEach((value,index) =>{
+            if(!value.checked){
+                flag=false
+            }
+        })
+        this.isSelectedAll=flag
     },
     // 返回上一页
     back(){
@@ -188,6 +226,7 @@ export default {
           item.count++
         }
       }
+      this.getAllShopPrice()
       
     },
     // 数量减
@@ -196,64 +235,49 @@ export default {
         if(item.id==id && item.count>1){
           item.count--; 
         }
-        
       }
+      this.getAllShopPrice()
     },
     //   跳转详情
     upDetail(item){
-        this.$router.push(item.href)
+        this.$router.push(`/Detail/${item.href.split("=")[1]}`)
         console.log(item.href)
     },
+    // 加载购物车数据
     load(){
       //   发送请求
       var url="shopcart/show"
+      var self = this;
       this.axios.get(url).then(res =>{
           // this.list=res.data
           if(res.data.code==-1){
               // 3.如果用户没有执行登录操作
               this.$messagebox("消息","请先登录").then(res=>{
                   // 提示交互提示 跳转登录组件
-                  // this.$router.push("/Login");
+                  this.$router.push("/Login");
                   // return;
               });
           }else{
-              // 4.获取数据成功
-              var list=res.data;
-              //4.1创建循环遍历数组并且为每个元素添加cb属性表示，商品前复选框状态
-              //  注意先添加 cb属性再赋值list
-
-              //加载前清空
-                  // console.log(res.data)
-              this.$store.commit("clear");
-              for(var item of list){
-                  //4.1.1添加cb属性表示状态
-                  item.cb=false;
-                  //4.1.2修改共享购物车中是数值 vuex
-                  this.$store.commit("increment")
-              }
-              // 购物车数量
-              
-              // 5.保存数据
-              this.list=list;
-              // console.log(this.list)
+            //  var list=res.data;
+             self.list=res.data
+            //  console.log(res.data)
+            //  console.log('loaded')
+            //  this.changeLength=res.data.length
+            //  console.log(res.data.length)
           }
-          // 计算合计
-          var sumPrice=0;
-          for(var item of this.list){
-              sumPrice+=(item.price*item.count)
-          }
-          this.sumPrice=sumPrice;
-
       })
+     
     },
   },
     created() {
         this.load()
     },
    watch: {
-   },
-   computed: {
-    //  ...mapGetters(['carList','allMoney','allSelsect'])   
+       fresh(){
+             this.load();
+             this.$emit('returnFresh')
+            //  this.fresh=0;
+       }
    },
 }
 </script>

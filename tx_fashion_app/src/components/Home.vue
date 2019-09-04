@@ -12,7 +12,7 @@
                 <find/>  
           </mt-tab-container-item>
            <mt-tab-container-item id="community">
-               <cart/> 
+               <cart :fresh="cartFresh" @returnFresh="changeFresh"/> 
           </mt-tab-container-item>
           <mt-tab-container-item id="me">
            <me/>
@@ -36,14 +36,14 @@
          </tabbaricon>
          分类
         </mt-tab-item>
-        <mt-tab-item id="find" @click.native="changeState(2)">
+        <!-- <mt-tab-item id="find" @click.native="changeState(2)">
           <tabbaricon
           :normalImage="require('../assets/find.png')"
           :selectedImage="require('../assets/find_a.png')"
           :focused="currentIndex[2].isSelect"> 
           </tabbaricon>
           发现
-        </mt-tab-item>
+        </mt-tab-item> -->
         <mt-tab-item id="community" @click.native="changeState(3)">
           <tabbaricon
           :normalImage="require('../assets/community.png')"
@@ -87,7 +87,8 @@ export default {
         {isSelect:false}
       ],
       change:'1',
-      turnBack:''
+      turnBack:'',
+      cartFresh:0,
     }
   },
   methods: {
@@ -117,6 +118,9 @@ export default {
           item.isSelect = false;
         }
         // this.currentIndex[3].isSelect = true;
+     },
+     changeFresh() {
+       this.cartFresh = 0;
      }
   },
   components:{
@@ -134,6 +138,12 @@ export default {
     //点详情页购物车 回到购物车
     turnBack() {
       this.active = this.turnBack;
+    },
+    // 监控页面到购物车部分
+    active() {
+      if(this.active == "community") {
+        this.cartFresh = 1;
+      }
     }
   },
 }

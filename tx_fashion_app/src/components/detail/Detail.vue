@@ -456,10 +456,148 @@
         </div>
     </div>
 
+    <!-- 尺寸 颜色 地址 -->
+    <div class="m-actionsheet" id="actionSheet">
+        <div class="aui-show-box">
+            <div class="aui-show-box-title aui-footer-flex">
+                <div class="aui-footer-flex1">颜色、尺码</div>
+                <div>
+                    <a href="javascript:;" id="cancel" class="">
+                        <i class="icon icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="aui-show-box-cp aui-footer-flex">
+                <div class="aui-show-box-img">
+                    <img src="images/pd-001.jpg" alt="">
+                </div>
+                <div class="aui-show-box-text">
+                    <h2>
+                        ￥588 <em>特价</em>
+                    </h2>
+                    <h3>
+                        已选: <em>白色、38</em>
+                    </h3>
+                    <p>
+                        仅剩 <em>19</em>
+                        件
+                    
+                    
+                    </p>
+                </div>
+            </div>
+            <div class="aui-category-box">
+                <p>颜色</p>
+                <div class="aui-category-box-list ">
+                    <a href="javascript:;" class="aui-category-box-item active">白色</a>
+                </div>
+            </div>
+            <div class="aui-category-box">
+                <p>尺码</p>
+                <div class="aui-category-box-list ">
+                    <a href="javascript:;" class="aui-category-box-item">36</a>
+                    <a href="javascript:;" class="aui-category-box-item active">37</a>
+                    <a href="javascript:;" class="aui-category-box-item">37.5</a>
+                    <a href="javascript:;" class="aui-category-box-item">38</a>
+                    <a href="javascript:;" class="aui-category-box-item">39</a>
+                    <a href="javascript:;" class="aui-category-box-item">40</a>
+                    <a href="javascript:;" class="aui-category-box-item">42</a>
+                    <a href="javascript:;" class="aui-category-box-item">43</a>
+                    <a href="javascript:;" class="aui-category-box-item">44</a>
+                    <a href="javascript:;" class="aui-category-box-item">44.5</a>
+                    <a href="javascript:;" class="aui-category-box-item">45</a>
+                </div>
+            </div>
+            <div class="aui-footer-group aui-footer-flex1">
+                <div class="aui-footer-flex">
+                    <div class="aui-btn aui-btn-gray">
+                        <span>加入购物车</span>
+                    </div>
+                    <div class="aui-btn aui-btn-red">
+                        <span>立即购买</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-actionsheet" id="actionSheet1">
+        <div class="aui-show-box">
+            <div class="aui-show-box-title aui-footer-flex">
+                <div class="aui-footer-flex1">免费开通</div>
+                <div>
+                    <a href="javascript:;" id="cancel1" class="">
+                        <i class="icon icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="aui-text-info">
+                <p>免费开通易支付 全场最低6期免息
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="m-actionsheet" id="actionSheet2">
+        <div class="aui-show-box">
+            <div class="aui-show-box-title aui-footer-flex">
+                <div class="aui-footer-flex1">配送至</div>
+                <div>
+                    <a href="javascript:;" id="cancel2" class="">
+                        <i class="icon icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="aui-text-info">
+                <p>北京市海地区西三环北路43号维新大厦
+                </p>
+                <p>北京市海地区西三环北路43号维新大厦
+                </p>
+                <p>北京市海地区西三环北路43号维新大厦
+                </p>
+                <p>北京市海地区西三环北路43号维新大厦
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="m-actionsheet" id="actionSheet3">
+        <div class="aui-show-box">
+            <div class="aui-show-box-title aui-footer-flex">
+                <div class="aui-footer-flex1">运费说明</div>
+                <div>
+                    <a href="javascript:;" id="cancel3" class="">
+                        <i class="icon icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="aui-text-info">
+                <p>免运费
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="m-actionsheet" id="actionSheet4">
+        <div class="aui-show-box">
+            <div class="aui-show-box-title aui-footer-flex">
+                <div class="aui-footer-flex1">商品说明</div>
+                <div>
+                    <a href="javascript:;" id="cancel5" class="">
+                        <i class="icon icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="aui-text-info">
+                <p>假一赔十 | 7天无忧退货 | 自营发货
+                </p>
+            </div>
+        </div>
+    </div>
+
      <!-- 店铺 客户 购物车 加入购物车 立即购买 -->
     <footer class="aui-footer-button aui-footer-flex aui-footer-fixed">
         <div class="aui-footer-wrap">
             <i class="icon-shop"></i>
+            <!-- <div>
+                <img style="width:20px;heigth:20px;display:block" src="../../assets/shop.png" alt="" >
+            </div> -->
             <span>店铺</span>
         </div>
         <div class="aui-footer-wrap">
@@ -472,9 +610,7 @@
         </div>
         <div class="aui-footer-group aui-footer-flex1">
             <div class="aui-footer-flex">
-                <div class="aui-btn aui-btn-gray" 
-                    	@click="addshoppcart"      
-                >
+                <div class="aui-btn aui-btn-gray" @click="addshoppcart">
                     <span>加入购物车</span>
                 </div>
                 <div class="aui-btn aui-btn-red">
@@ -486,8 +622,7 @@
 </div>
 </template>
 <script>
-// import Carousel from "./Carousel";
-//  import { mapActions } from 'vuex'    //引入方法
+import { layer } from '../../assets/js/layer.js'
 export default {
   data() {
       return {
@@ -508,14 +643,14 @@ export default {
         upToCart(){
             // sessionStorage.setItem('turnBack','community')
             this.$store.commit('setTabShow','community')
-            console.log(this.$store.getters.getTabShow)
+            // console.log(this.$store.getters.getTabShow)
             this.$router.push("/");
         },
         //   加载信息
          load(){
             // let id = this.$route.query.lid
             // this.lid=id
-            console.log(this.lid)
+            // console.log(this.lid)
             if(this.lid){
                 var url="detail"
                 this.axios.get(url,{params:{lid:this.lid}}).then(result =>{
@@ -532,8 +667,9 @@ export default {
          addshoppcart(){
 			//   console.log(222222222)
              //  获取数据
-             var pid=this.$route.query.lid;
-             var href=this.$route.fullPath;
+             var pid=this.lid
+             var href="Detail?lid=" + this.lid  
+            //  console.log(href)
 			 var title=this.list.title
 			 var price=this.list.price
 			 var pic=this.list.pic
@@ -557,9 +693,6 @@ export default {
 			 });
 		 },
      },
-    //  components:{
-    //     "carousel":Carousel,
-    //  },
      created() {
 		 this.load(); //加载
      },
@@ -567,6 +700,9 @@ export default {
          lid(){//只要lid发生变化
              this.load()//就重新请求服务端数据 更好data中的所有变量   
          }
+     },
+     mounted() {
+         this.load()
      },
 }
 </script>
@@ -860,7 +996,7 @@ export default {
 
 .aui-footer-flex {
     display: -webkit-box;
-    display: box;
+    display: flex;
     display: -webkit-flex;
     display: flex;
     -webkit-box-align: center;

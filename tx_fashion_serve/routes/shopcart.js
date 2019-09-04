@@ -17,7 +17,7 @@ router.get("/show",(req,res)=>{
         if(err) throw err;
         if(result.length>0){
             res.send(result)
-          //   console.log(result)
+            console.log(result)
         };
     })
   
